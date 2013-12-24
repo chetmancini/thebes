@@ -1,4 +1,4 @@
-(defproject thebes "0.1.0-SNAPSHOT"
+(defproject thebes-processor "0.1.0-SNAPSHOT"
   :description "A lambda architecture for realtime data processing"
   :url "http://github.com/chetmancini/thebes"
   :license {:name "Eclipse Public License"
@@ -10,18 +10,16 @@
   :javac-options {:debug "true" :fork "true"}
   :java-source-path "src/jvm"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [liberator "0.10.0"]]
-  :aot [thebes.api.server]
-  :main ^:skip-aot thebes.api.server
+                 [cascalog/cascalog-core "2.0.0"]
+                 [storm "0.9.0.1"]]
+  :aot [thebes.storm.TopologySubmitter]
+  :main ^:skip-aot thebes.storm.TopologySubmitter
   :target-path "target/%s"
   :source-paths ["src"]
   :test-paths ["test"]
-  :aliases {"api" ["run" "-m" "thebes.api.server"]}
-  :profiles {:dev {:dependencies [[lein-midje "3.0.1"]
+  :aliases {"topology" ["run" "-m" "thebes.storm.topology"]}
+  :profiles {:dev {:dependencies [[org.apache.hadoop/hadoop-core "1.1.2"]
+                                  [lein-midje "3.0.1"]
                                   [cascalog/midje-cascalog "2.0.0"]
-                                  [ring/ring-jetty-adapter "1.2.1"]
-                                  [ring-mock "0.1.5"]
-                                  [ring/ring-devel "1.2.1"]
-                                  [compojure "1.1.6" :exclusions [org.clojure/tools.macro]]
                                   [midje "1.6.0"]]}
              :uberjar {:aot :all}})
