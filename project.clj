@@ -11,10 +11,10 @@
   :java-source-path "src/jvm"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [cascalog/cascalog-core "2.0.0"]
-                 [storm "0.9.0.1"]
+                 ;;[storm "0.9.0.1"]
                  [liberator "0.10.0"]]
-  :aot [thebes.TopologySubmitter]
-  :main ^:skip-aot thebes.core
+  ;;:aot [thebes.sTopologySubmitter]
+  ;;:main ^:skip-aot thebes.core
   :target-path "target/%s"
   :source-paths ["src"]
   :test-paths ["test"]
@@ -23,5 +23,9 @@
   :profiles {:dev {:dependencies [[org.apache.hadoop/hadoop-core "1.1.2"]
                                   [lein-midje "3.0.1"]
                                   [cascalog/midje-cascalog "2.0.0"]
+                                  [ring/ring-jetty-adapter "1.2.1"]
+                                  [ring-mock "0.1.5"]
+                                  [ring/ring-devel "1.2.1"]
+                                  [compojure "1.1.6" :exclusions [org.clojure/tools.macro]]
                                   [midje "1.6.0"]]}
              :uberjar {:aot :all}})
