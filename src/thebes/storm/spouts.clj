@@ -1,4 +1,4 @@
-(ns thebes.spouts
+(ns thebes.storm.spouts
   (:require [backtype.storm [clojure :refer [defspout spout emit-spout!]]]))
 
 (defspout type-spout ["type"]

@@ -1,5 +1,5 @@
 (ns thebes.TopologySubmitter
-  (:require [thebes.topology :refer [stormy-topology]]
+  (:require [thebes.storm.topology :refer [stormy-topology]]
             [backtype.storm [config :refer :all]])
   (:import [backtype.storm StormSubmitter])
   (:gen-class))

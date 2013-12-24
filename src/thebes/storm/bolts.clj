@@ -1,4 +1,4 @@
-(ns thebes.bolts
+(ns thebes.storm.bolts
   (:require [backtype.storm [clojure :refer [emit-bolt! defbolt ack! bolt]]]))
 
 (defbolt stormy-bolt ["stormy"] [{type :type :as tuple} collector]

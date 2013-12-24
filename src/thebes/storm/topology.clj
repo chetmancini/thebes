@@ -1,5 +1,5 @@
-(ns thebes.topology
-  (:require [thebes
+(ns thebes.storm.topology
+  (:require [thebes.storm
              [spouts :refer [type-spout]]
              [bolts :refer [stormy-bolt thebes-bolt]]]
             [backtype.storm [clojure :refer [topology spout-spec bolt-spec]] [config :refer :all]])

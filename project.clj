@@ -18,7 +18,8 @@
   :target-path "target/%s"
   :source-paths ["src"]
   :test-paths ["test"]
-  :aliases {"api" ["run" "-m" "thebes.api.server"]}
+  :aliases {"api" ["run" "-m" "thebes.api.server"]
+            "topology" ["run" "-m" "thebes.storm.topology"]}
   :profiles {:dev {:dependencies [[org.apache.hadoop/hadoop-core "1.1.2"]
                                   [lein-midje "3.0.1"]
                                   [cascalog/midje-cascalog "2.0.0"]
