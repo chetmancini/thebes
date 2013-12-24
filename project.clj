@@ -13,5 +13,8 @@
   :aot [thebes.TopologySubmitter]
   :main ^:skip-aot thebes.core
   :target-path "target/%s"
-  :profiles {:dev {:dependencies [[org.apache.hadoop/hadoop-core "1.1.2"]]}
+  :profiles {:dev {:dependencies [[org.apache.hadoop/hadoop-core "1.1.2"]
+                                  [lein-midje "3.0.1"]
+                                  [cascalog/midje-cascalog "2.0.0"]
+                                  [midje "1.6.0"]]}
              :uberjar {:aot :all}})
