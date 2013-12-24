@@ -2,12 +2,13 @@
   (:require [clojure.java.io :as io]
             [clojure.data.json :as json]
             [liberator.dev :as dev])
-  (:use [liberator.core :only [defresource request-method-in]]
+  (:use [thebes.api.parse]
+        [liberator.core :only [defresource request-method-in]]
         [liberator.representation :only [Representation]]
         [compojure.core :only [context ANY routes defroutes]]
         [clojure.string :only [split]]))
 
-(defn put-data [input]
+(defn handle-data [input]
   (println input))
 
 (defresource hello-world
@@ -18,12 +19,11 @@
 (defresource data-input
   :allowed-methods [:post :get]
   :available-media-types ["application/json"]
+  :known-content-type? #(check-content-type % ["application/json"])
   :handle-ok (fn [ctx]
               (str "<html>Post application/json to this resource.</html>"))
-  :post! (fn [ctx]
-           (dosync 
-            (let [body (slurp (get-in ctx [:request :body]))]
-              (put-data body)))))
+  :malformed? #(parse-json % ::data)
+  :post! #(dosync (handle-data (::data %))))
 
 (defn assemble-routes []
   (->
