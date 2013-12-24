@@ -1,36 +1,35 @@
-# thebes
+# Thebes
 
-FIXME: description
+Thebes was one of the great cities of ancient Egypt, along the banks of one of the greatest rivers in teh world, the Nile. Similarly, this repository intends to be an architecture for leveraging a great river of realtime data.
+
+Thebes has two components isolated for application and dependecy purposes. The api is the public input and will support configuration for a variety of queues. The processor is the backend component for the primary data processing by storm or cascalog.
+
+Thebes attempts to be written in 100% Clojure.
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Install Leiningen, and then download directly from Github.
 
 ## Usage
 
-FIXME: explanation
+The API
 
-    $ java -jar thebes-0.1.0-standalone.jar [args]
+	$ cd thebes-api
+	$ lein api
+
+The Processor
+
+	$ cd thebes-processor
+    $ lein topology
 
 ## Options
 
-FIXME: listing of options this app accepts.
-
 ## Examples
 
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+## Bugs
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 Chet Mancini
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License. No warranty of any kind is given or implied.
