@@ -13,8 +13,8 @@
                  [cascalog/cascalog-core "2.0.0"]
                  ;;[storm "0.9.0.1"]
                  [liberator "0.10.0"]]
-  ;;:aot [thebes.sTopologySubmitter]
-  ;;:main ^:skip-aot thebes.core
+  :aot [thebes.storm.TopologySubmitter]
+  :main ^:skip-aot thebes.storm.TopologySubmitter
   :target-path "target/%s"
   :source-paths ["src"]
   :test-paths ["test"]
