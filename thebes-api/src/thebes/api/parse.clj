@@ -1,6 +1,6 @@
 (ns thebes.api.parse
   (:require [clojure.java.io :as io]
-            [clojure.data.json :as json])
+            [cheshire.core :refer :all])
   (:use [liberator.core :only [defresource request-method-in]]
         [compojure.core :only [context ANY routes defroutes]]
         [clojure.string :only [split]]))
@@ -17,7 +17,7 @@
   (when (#{:put :post} (get-in context [:request :request-method]))
     (try
       (if-let [body (body-as-string context)]
-        (let [data (json/read-str body)]
+        (let [data (parse-string body)]
           [false {key data}])
         {:message "No body"})
       (catch Exception e

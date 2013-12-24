@@ -2,6 +2,7 @@
   (:require
    [ring.adapter.jetty :as jetty])
   (:use
+   [thebes.config]
    [thebes.api.routes :only [assemble-routes]]
    [ring.middleware.multipart-params :only [wrap-multipart-params]]
    [ring.util.response :only [header]]
@@ -19,4 +20,4 @@
   ([port]
      (start {:port (Integer/parseInt port)}))
   ([]
-     (-main "8000")))
+     (-main api-port)))

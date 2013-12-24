@@ -3,13 +3,15 @@
             [clojure.data.json :as json]
             [liberator.dev :as dev])
   (:use [thebes.api.parse]
+        [thebes.output.rabbitmq :only [publish-data]]
         [liberator.core :only [defresource request-method-in]]
         [liberator.representation :only [Representation]]
         [compojure.core :only [context ANY routes defroutes]]
         [clojure.string :only [split]]))
 
 (defn handle-data [input]
-  (println input))
+  (println input)
+  (publish-data input))
 
 (defresource hello-world
   :handle-ok "Hello World!"

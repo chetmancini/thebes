@@ -10,7 +10,10 @@
   :javac-options {:debug "true" :fork "true"}
   :java-source-path "src/jvm"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [liberator "0.10.0"]]
+                 [liberator "0.10.0"]
+                 [com.novemberain/langohr "2.0.1"]
+                 [cheshire "5.3.0"]
+                 [clj-time "0.6.0"]]
   :aot [thebes.api.server]
   :main ^:skip-aot thebes.api.server
   :target-path "target/%s"
