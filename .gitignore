@@ -1,8 +1,12 @@
 pom.xml
-*jar
+*.jar
+*.class
 /lib/
 /classes/
 /targets/
+/checkouts
 /target
 .lein-deps-sum
 .lein-repl-history
+.lein-failures
+.lein-plugins

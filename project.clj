@@ -10,6 +10,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [cascalog/cascalog-core "2.0.0"]
                  [storm "0.9.0.1"]]
+  :aot [thebes.TopologySubmitter]
   :main ^:skip-aot thebes.core
   :target-path "target/%s"
   :profiles {:dev {:dependencies [[org.apache.hadoop/hadoop-core "1.1.2"]]}
