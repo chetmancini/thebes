@@ -1,4 +1,9 @@
-# Thebes
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.svg">
+    <img src="docs/logo.svg" alt="Thebes: a pen sketch of the pyramids of Giza above the winding Nile" width="400">
+  </picture>
+</p>
 
 Thebes was one of the great cities of ancient Egypt, on the banks of the Nile. This Thebes is a small [lambda architecture](https://en.wikipedia.org/wiki/Lambda_architecture) for realtime data, written in about 1,200 lines of heavily commented Clojure, plus an example app and a demo. You can read it in an afternoon and run it with one command.
 
