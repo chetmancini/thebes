@@ -1,12 +1,16 @@
-pom.xml
+# Clojure
+.cpcache/
+.clj-kondo/.cache/
+.lsp/
+.nrepl-port
+target/
 *.jar
 *.class
-/lib/
-/classes/
-/targets/
-/checkouts
-/target
-.lein-deps-sum
-.lein-repl-history
-.lein-failures
-.lein-plugins
+
+# Local master datasets from `clojure -M:run`
+/data/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store

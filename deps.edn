@@ -1,0 +1,27 @@
+{:paths ["src" "resources"]
+
+ :deps {org.clojure/clojure    {:mvn/version "1.12.6"}
+        org.clojure/core.async {:mvn/version "1.9.865"}
+        org.clojure/tools.cli  {:mvn/version "1.4.256"}
+        http-kit/http-kit      {:mvn/version "2.8.1"}
+        cheshire/cheshire      {:mvn/version "6.2.0"}
+        com.novemberain/langohr {:mvn/version "5.6.0"}
+        ;; The AMQP client logs through SLF4J; keep it quiet.
+        org.slf4j/slf4j-nop    {:mvn/version "1.7.36"}}
+
+ :aliases
+ {;; clojure -M:run [all|ingest|processor] [options]
+  :run  {:main-opts ["-m" "thebes.main"]}
+
+  ;; clojure -M:demo [options]
+  :demo {:main-opts ["-m" "thebes.demo"]}
+
+  :test {:extra-paths ["test"]
+         :extra-deps  {org.clojure/test.check {:mvn/version "1.1.3"}
+                       io.github.cognitect-labs/test-runner
+                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+         :main-opts   ["-m" "cognitect.test-runner"]
+         :exec-fn     cognitect.test-runner.api/test}
+
+  :lint {:replace-deps {clj-kondo/clj-kondo {:mvn/version "2026.08.04"}}
+         :main-opts    ["-m" "clj-kondo.main" "--lint" "src" "test"]}}}

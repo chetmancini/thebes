@@ -1,0 +1,18 @@
+# RabbitMQ for running Thebes as separate ingest and processor nodes.
+#
+#   docker compose up -d rabbitmq
+#   clojure -M:run processor --transport rabbitmq --port 8081
+#   clojure -M:run ingest    --transport rabbitmq --port 8080
+#
+# Management UI: http://localhost:15672 (RabbitMQ's default local login).
+services:
+  rabbitmq:
+    image: rabbitmq:4-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
