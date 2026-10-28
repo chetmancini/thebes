@@ -68,6 +68,54 @@ curl localhost:8080/api/v1/views/stations?station=luxor
 curl -N localhost:8080/api/v1/streams/flood-alerts/sse     # live alerts
 ```
 
+## Development commands
+
+The Makefile wraps the Clojure CLI commands above. Run `make` or `make help` to
+list all targets. Docker Compose is needed only for RabbitMQ targets.
+
+```sh
+make deps                       # download dependencies and development tools
+make run                        # start a node
+make run ARGS="processor --port 8081 --transport rabbitmq"
+make repl                       # application REPL
+make demo                       # guided demo
+make demo ARGS="--plain --rate 720"
+make test                       # tests; skips RabbitMQ unless configured
+make test ARGS="-n thebes.agg-test"
+make lint                       # clj-kondo
+make check                      # lint and tests
+make outdated                   # report outdated deps.edn dependencies
+make update                     # upgrade deps.edn dependencies, then check
+make rabbitmq-up                # start the local broker and wait until healthy
+make test-integration           # tests including RabbitMQ integration
+make demo-rabbitmq              # demo over RabbitMQ
+make ci                         # checks and both demos, as in CI; needs broker
+make rabbitmq-down              # stop the broker, preserving its data
+```
+
+`ARGS` forwards options to the selected command. Override `CLOJURE`, `DOCKER`,
+or `RABBITMQ_URI` as needed. `make update` uses
+[Antq](https://github.com/clj-commons/antq) to update dependencies, including
+development aliases; review the resulting diff before committing. It leaves
+GitHub Actions versions alone. `make outdated` exits with a nonzero status when
+updates are available.
+
+Versions are annotated Git tags rather than a package manifest. From a clean,
+committed checkout:
+
+```sh
+make version                    # latest local release tag; initially 0.0.0
+make release VERSION=0.1.0      # choose an explicit version
+make release BUMP=patch         # increment the latest release (the default)
+make release BUMP=minor         # or major
+```
+
+`make release` runs `make check` before creating a local `vMAJOR.MINOR.PATCH`
+tag. With no existing release tags, the default first release is `v0.0.1`.
+An explicit version must be greater than the latest local release. Fetch tags
+first when releasing from a clone that may be out of date. Publish the tag
+separately with `git push origin v0.1.0` (using the version you created).
+
 ## How it works
 
 ```

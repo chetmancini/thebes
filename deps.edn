@@ -24,4 +24,7 @@
          :exec-fn     cognitect.test-runner.api/test}
 
   :lint {:replace-deps {clj-kondo/clj-kondo {:mvn/version "2026.08.04"}}
-         :main-opts    ["-m" "clj-kondo.main" "--lint" "src" "test"]}}}
+         :main-opts    ["-m" "clj-kondo.main" "--lint" "src" "test"]}
+
+  :outdated {:replace-deps {com.github.liquidz/antq {:mvn/version "2.11.1276"}}
+             :main-opts ["-m" "antq.core" "--skip=github-action"]}}}
